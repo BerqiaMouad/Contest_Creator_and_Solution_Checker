@@ -31,7 +31,7 @@ run this command:
 `pip3 install bs4 `
 
 
-### Creating and Testing 
+## 2. Creating and Testing 
 
 ##### To create a new directory containing the contest you want you should run the folloing command
 
