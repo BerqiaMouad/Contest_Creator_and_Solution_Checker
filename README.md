@@ -3,6 +3,8 @@
 Using this mini project you can get all the problems and theire input data and the expected data.
 Also, you can code your solution and test it locally using the check.py script.
 
+PS: This tool only works on linux !
+
 ## 1. Setup
 
 To be able to run these scripts you need to setup some stuff.
