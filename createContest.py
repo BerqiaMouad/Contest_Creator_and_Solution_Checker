@@ -25,19 +25,29 @@ def initProblem(problem, dir):
 
     testCount = 1
 
-    for test in problemSoup.find_all(class_="sample-test"):
+    for testIn, testOut in zip(problemSoup.find_all(class_="input"), problemSoup.find_all(class_="output")):
         fileIn = open(dir + '/' + 'in' + str(testCount) + '.txt', 'w')
         fileExpected = open(dir + '/' + 'expected' + str(testCount) + '.txt', 'w')
-        for inputExample in test.find_all(class_="test-example-line"):
-            fileIn.write(inputExample.text+'\n')
-            
-        for outputExample in test.find_all(class_="output"):
-            fileExpected.write("\n".join(outputExample.find('pre').text.split()))
-            fileExpected.write("\n")
+
+        ct = 0
+        for inputExample in testIn.find('pre'):
+            l = inputExample.text.split("\n")
+            for i in l:
+                if(i == ''):
+                    continue
+                fileIn.write(i + "\n")
+        
+        for outputExample in testOut.find('pre'):
+            l = outputExample.text.split("\n")
+            for i in l:
+                if(i == ''):
+                    continue
+                fileExpected.write(i + "\n")
 
         fileIn.close()
         fileExpected.close()
-        testCount+=1
+
+        testCount += 1
 
 page = requests.get(url)
 
