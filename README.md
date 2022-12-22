@@ -19,16 +19,20 @@ Now you need to install some dependencies:
 
 In your terminal run the following commands:
 
-`sudo apt update `
-`sudo apt install python3 `
-`sudo apt install python3-pip `
+``` 
+sudo apt update 
+sudo apt install python3 
+sudo apt install python3-pip 
+```
 
 ### termcolor and beautifulsoup
 
 run this command:
 
-`pip3 install termcolor `
-`pip3 install bs4 `
+```
+pip3 install termcolor
+pip3 install bs4 
+```
 
 
 ## 2. Creating and Testing 
