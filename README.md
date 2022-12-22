@@ -51,5 +51,7 @@ After that you should enter the directory of the contest (its name will be the n
 
 ##### To test a problem you want, access the directory of the problem then type the following command
 
+###### PS: this one works only for C++ programs, I will modify it to include Python and Java later !!
+
 ` check.py `
 
