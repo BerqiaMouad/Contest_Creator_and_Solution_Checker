@@ -17,8 +17,43 @@ def progressBar(progress, total):
     print(colored(f"\r|{bar}| : {percent:.2f}%", 'green', attrs=['bold']), end="\r")
 
 
-def initProblem(problem, dir):
-    os.system("cp /bin/sample.cpp " + dir + "/" + problem + ".cpp")
+def choseLang():
+    print("1. C++ \n2. Java \n3. Python")
+    lang = input("Please chose your language (1, 2 or 3): ")
+    return lang
+
+
+def sample(did):
+    if(not(did)):
+        pr = input("Do you want to copy an existing code as a sample? (YES / NO): ")
+        did = True
+    else:
+        pr = input("Please enter YES or NO: ")
+    if(pr.lower() == "yes"):
+        return True
+    elif(pr.lower() == "no"):
+        return False
+    else:
+        print(colored("Bad choice! ", 'red', attrs=['bold']), end="")
+        sample(did)
+
+def initProblem(problem, dir, lang, hasSample):
+    if(lang == "1" and hasSample):
+        os.system("cp /bin/sample.cpp " + dir + "/" + problem + ".cpp")
+    elif(lang == "1" and not(hasSample)):
+        os.system("touch " + dir + '/' + problem + ".cpp")
+    elif(lang == "2" and hasSample):
+        os.system("cp /bin/sample.java " + dir + "/" + problem + ".java")
+    elif(lang == "2" and not(hasSample)):
+        os.system("touch " + dir + '/' + problem + '.java')
+    elif(lang == "3" and hasSample):
+        os.system("cp /bin/sample.py "+ dir + "/" + problem + ".py")
+    elif(lang == "3" and not(hasSample)):
+        os.system("touch " + dir + "/" + problem + ".py")
+    else:
+        print(colored("ERROR: " + lang + " is not in the list!", 'red', attrs=['bold']))
+        return -1
+
     problemUrl = url + '/problem/' + problem
     problemPage = requests.get(problemUrl)
     problemSoup = bs(problemPage.content, 'html.parser')
@@ -48,6 +83,8 @@ def initProblem(problem, dir):
         fileExpected.close()
 
         testCount += 1
+    
+    return 0;
 
 page = requests.get(url)
 
@@ -59,10 +96,16 @@ os.mkdir(contestNumber)
 
 progress = 0;
 
+lang = choseLang()
+hasSample = sample(False)
+
 for i in range(numOfProblems):
     dir = chr(65 + i);
     os.mkdir('./' + sys.argv[1] + '/' + dir)
-    initProblem(chr(65 + i), os.path.abspath(os.getcwd()) + '/' + str(contestNumber) + '/' + dir)
+    initialize = initProblem(chr(65 + i), os.path.abspath(os.getcwd()) + '/' + str(contestNumber) + '/' + dir, lang, hasSample)
+    if(initialize == -1):
+        os.system("rm -r " + os.getcwd() + '/' + str(contestNumber))
+        exit(-1)
     os.system("clear")
     progressBar(i+1, numOfProblems)
 
