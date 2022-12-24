@@ -67,4 +67,16 @@ After that you should access the directory of the contest (its name will be the 
 
 ##### To submit your solution you will need to execute ` sub.py ` script. (You should be in the directory of the problem)
 
+To use this feature you should first execute the following command on a seprate terminal:
+
+```
+/usr/bin/google-chrome -remote-debugging-port=9014 --user-data-dir="<A directory where you want to store user data>" -no-sandbox
+```
+
+Then switch back to your terminal where you have the directory of the problem and type the following command to submit:
+
+```
+sub.py
+```
+
 
