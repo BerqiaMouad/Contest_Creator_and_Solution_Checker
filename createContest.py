@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as bs
 import requests 
 import os
 import sys
+import time
 
 contestNumber = sys.argv[1]
 
@@ -72,6 +73,8 @@ def initProblem(problem, dir, lang, hasSample):
                     continue
                 fileIn.write(i + "\n")
         
+        print("Got sample input#" + str(testCount) + " ✓")
+        time.sleep(0.2)
         for outputExample in testOut.find('pre'):
             l = outputExample.text.split("\n")
             for i in l:
@@ -79,8 +82,11 @@ def initProblem(problem, dir, lang, hasSample):
                     continue
                 fileExpected.write(i + "\n")
 
+        print("Got sample output#" + str(testCount) + " ✓")
+        time.sleep(0.2)
         fileIn.close()
         fileExpected.close()
+        
 
         testCount += 1
     
@@ -98,8 +104,18 @@ progress = 0;
 
 lang = choseLang()
 hasSample = sample(False)
+l = []
 
 for i in range(numOfProblems):
+    os.system("clear")
+    progressBar(i, numOfProblems)
+    print()
+    print()
+    for j in l:
+        print(colored(j, 'green', attrs=['bold']))
+
+    print()
+ 
     dir = chr(65 + i);
     os.mkdir('./' + sys.argv[1] + '/' + dir)
     initialize = initProblem(chr(65 + i), os.path.abspath(os.getcwd()) + '/' + str(contestNumber) + '/' + dir, lang, hasSample)
@@ -108,6 +124,11 @@ for i in range(numOfProblems):
         exit(-1)
     os.system("clear")
     progressBar(i+1, numOfProblems)
+    print()
+    print()
+    l.append("Created " + dir)
+    for j in l:
+        print(colored(j, 'green', attrs=['bold']))
 
 print()
 print()
