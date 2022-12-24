@@ -49,7 +49,11 @@ You can get the number of the contest when you open its link for exemple:
 
 Here the number of the contest is 1772
 
-After that you should enter the directory of the contest (its name will be the number of the problem).
+You will be prompted to chose the programming language you like to use, chose one by selecting the number (1, 2 or 3)
+
+Then you will be asked if you want to use a code as a sample, you should have already created a file in the bin directory to be able to use it as a sample and you have to name it "sample.(extension of your language)" for example: sample.cpp or sample.py
+
+After that you should access the directory of the contest (its name will be the number of the problem).
 
 ##### To test a problem you want, access the directory of the problem then type the following command
 
