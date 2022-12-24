@@ -63,7 +63,7 @@ while os.path.exists(os.path.abspath(os.getcwd()) + "/in" + str(index) + ".txt")
 	
 	elif(lang == "2"):
 		os.system("javac " + str(os.getcwd())[-1] + ".java")
-		os.system("java " + str(os.getcwd())[-1] + ".class" + "< in" + str(index) + ".txt > out" + str(index) + ".txt")
+		os.system("java " + str(os.getcwd())[-1] + "< in" + str(index) + ".txt > out" + str(index) + ".txt")
 	
 	else:
 		os.system("python3 " + str(os.getcwd())[-1] + ".py" + "< in" + str(index) + ".txt > out" + str(index) + ".txt")
