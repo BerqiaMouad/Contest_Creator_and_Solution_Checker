@@ -34,6 +34,9 @@ run this command:
 ```
 pip3 install termcolor
 pip3 install bs4 
+pip3 install clipboard
+pip3 install selenium
+
 ```
 
 
@@ -57,7 +60,11 @@ After that you should access the directory of the contest (its name will be the 
 
 ##### To test a problem you want, access the directory of the problem then type the following command
 
-###### PS: this one works only for C++ programs, I will modify it to include Python and Java later !!
-
 ` check.py `
+
+
+## 3. Submiting solution
+
+##### To submit your solution you will need to execute ` sub.py ` script. (You should be in the directory of the problem)
+
 
