@@ -14,8 +14,8 @@ url = 'https://codeforces.com/contest/' + str(contestNumber)
 
 def progressBar(progress, total):
     percent = 100 * (progress / total)
-    bar = '|' * int(percent) + '-' * (100 - int(percent))
-    print(colored(f"\r|{bar}| : {percent:.2f}%", 'green', attrs=['bold']), end="\r")
+    bar = '█' * int(percent) + '-' * (100 - int(percent))
+    print(colored(f"\r▏{bar}▕ : {percent:.2f}%", 'green', attrs=['bold']), end="\r")
 
 
 def choseLang():
