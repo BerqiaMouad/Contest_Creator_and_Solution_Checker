@@ -58,9 +58,8 @@ codeToSubmit = sourceCode.read()
 
 sourceCode.close()
 
-clipboard.copy(codeToSubmit)
+subFile = driver.find_element_by_xpath("//input[@type='file']")
 
-driver.find_element(By.CLASS_NAME, "ace_text-input").send_keys(Keys.SHIFT, Keys.INSERT)
+subFile.send_keys(pt + "/" + pt[len(pt) - 1] + ext)
 
 driver.find_element(By.CLASS_NAME, "submit").click()
-
