@@ -22,7 +22,13 @@ driver = webdriver.Chrome(options=options)
 
 pt = str(os.getcwd())
 
-problem = pt[len(pt) - 1]
+problem = ""
+pt[len(pt) - 1]
+ind = len(pt) - 1
+while pt[ind] != '/':
+	problem += pt
+	ind-=1
+problem = problem[::-1]
 
 contest = ""
 
