@@ -98,6 +98,11 @@ soup = bs(page.content, 'html.parser')
 
 numOfProblems = len(soup.find_all(class_="id"))
 
+problemsNames = []
+for i in soup.find_all(class_="id"):
+    problemsNames.append(i.find('a').text.strip())
+print(problemsNames)
+
 os.mkdir(contestNumber)
 
 progress = 0;
@@ -116,9 +121,9 @@ for i in range(numOfProblems):
 
     print()
  
-    dir = chr(65 + i);
+    dir = problemsNames[i];
     os.mkdir('./' + sys.argv[1] + '/' + dir)
-    initialize = initProblem(chr(65 + i), os.path.abspath(os.getcwd()) + '/' + str(contestNumber) + '/' + dir, lang, hasSample)
+    initialize = initProblem(dir, os.path.abspath(os.getcwd()) + '/' + str(contestNumber) + '/' + dir, lang, hasSample)
     if(initialize == -1):
         os.system("rm -r " + os.getcwd() + '/' + str(contestNumber))
         exit(-1)
